@@ -1,0 +1,66 @@
+﻿@model IEnumerable<ABC.EFCore.Repository.Edmx.Faq>
+
+
+@{
+    ViewBag.Title = "FaqsGet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+  <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    @if (TempData["response"] != null)
+    {
+        <script>
+            $(document).ready(function() {
+                var success = '@((TempData["response"] != null).ToString())';
+                if (success == 'false' || success == false) {
+                    toastr.error('@TempData["response"].ToString()')
+                } else {
+                    toastr.success('@TempData["response"].ToString()')
+                }
+            });
+        </script>
+    }
+<h1>FaqsGet</h1>
+
+<table class="demo-foo-addrow2 table table-bordered table m-b-0 toggle-arrow-tiny example23" cellspacing="0" width="100%">
+
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Is Public</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@item.Description</td>
+                    <td>
+                        @if (item.IsPublic == true)
+                        {
+                            <span>Public</span>
+                        }
+                        else
+                        {
+                                <span>private</span>
+                        }
+                    </td>
+
+                    <td>
+                        <a class="btn btn-link btn-warning edit" style="color:red" href='@Url.Action("FaqUpate", "Faqs", new { id = item.Id})' : null"><i class="fa fa-edit"></i></a>
+                        <a class="btn btn-link btn-danger remove" style="color:maroon"  href='@Url.Action("FaqDelete", "Faqs", new { id = item.Id})' : null"><i class="fa fa-times"></i></a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

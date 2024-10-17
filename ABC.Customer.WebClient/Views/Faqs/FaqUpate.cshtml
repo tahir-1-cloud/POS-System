@@ -1,0 +1,94 @@
+﻿@model ABC.EFCore.Repository.Edmx.Faq
+@{
+    ViewBag.Title = "FaqUpate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--Jquery Calendr-->
+    <link href="styles/glDatePicker.default.css" rel="stylesheet" type="text/css">
+
+    <title>FAQs</title>
+    <style>
+        .form-row {
+            margin-top: 20px;
+        }
+
+        .Fee {
+            margin-top: 25px;
+            padding: 25px;
+            display: none;
+            color: #fff;
+            border: 1px solid grey;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        @using (Html.BeginForm(Html.BeginForm("Faqsdataupdate", "Faqs", FormMethod.Post)))
+        {
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model=>model.Id)
+            <div class="col-12 grid-margin">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="panel panel-primary ">
+                            <div class="panel-heading" id="panelheading">Add FAQ's</div>
+                            <div class="panel-body">
+                                <div class="form-row">
+                                    <div class="form-group col-md-3">
+                                        <label>Title</label>
+                                        @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Title" })
+                                        @Html.ValidationMessageFor(x => x.Title, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group col-md-8">
+                                        <label>Description</label>
+                                        @Html.TextAreaFor(x => x.Description, new { @class = "form-control", @placeholder = "Description" })
+                                        @Html.ValidationMessageFor(x => x.Description, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-3">
+                                        <label>Publish</label>
+                                        @Html.CheckBox("IsPublic", new { @class = "form-control" })
+                                        @if (Model.IsPublic == true)
+                                        {
+
+                                            <span>Public</span>
+                                            @* @Html.CheckBox("IsPublic",true)*@
+                                        }
+                                        else if (Model.IsPublic == false)
+                                        {
+                                            <span>Private</span>
+                                            @*  @Html.CheckBox("IsPublic",false)*@
+
+                                        }
+                                        else
+                                        {
+                                            <span>Null</span>
+
+                                            @*@Html.CheckBox("private",false)*@
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-button">
+                        <button type="submit" class="btn btn-dark py-2" style="color:white; font-size:15px; height:30px;float:right">
+                            Update
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>

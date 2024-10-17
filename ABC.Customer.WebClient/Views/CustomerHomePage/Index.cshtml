@@ -1,0 +1,177 @@
+﻿@model IEnumerable<ABC.EFCore.Repository.Edmx.Product>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+<style>
+    .card-body .btn {
+        min-width: 45%;
+    }
+
+    .card-body .row .col-md-4 {
+        text-align: -webkit-center;
+    }
+</style>
+<style>
+    @@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+
+    body {
+        /*background-color: #d6d2d2;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300*/
+    }
+
+    .card {
+        border: none;
+        border-radius: 10px
+    }
+
+    .btn-custom {
+        background-color: #64b3f4;
+    }
+
+    .text-custom {
+        color: #64b3f4;
+    }
+
+    .percent {
+        padding: 5px;
+        background-color: #64b3f4;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 14px;
+        height: 35px;
+        width: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer
+    }
+
+    .wishlist {
+        height: 40px;
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background-color: #eee;
+        padding: 10px;
+        cursor: pointer
+    }
+
+    .img-container {
+        position: relative
+    }
+
+        .img-container .first {
+            position: absolute;
+            width: 100%
+        }
+
+        .img-container img {
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px
+        }
+
+    .product-detail-container {
+        padding: 10px
+    }
+
+    .ratings i {
+        color: #a9a6a6
+    }
+
+    .ratings span {
+        color: #a9a6a6
+    }
+
+    label.radio {
+        cursor: pointer
+    }
+
+        label.radio input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            visibility: hidden;
+            pointer-events: none
+        }
+
+        label.radio span {
+            height: 25px;
+            width: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #64b3f4;
+            color: #64b3f4;
+            font-size: 10px;
+            border-radius: 50%;
+            text-transform: uppercase
+        }
+
+        label.radio input:checked + span {
+            border-color: #64b3f4;
+            background-color: #64b3f4;
+            color: #fff
+        }
+</style>
+
+<div class="container my-3">
+    <div class="p-2">
+        <h1 class="text-center">Our Top Products</h1>
+        <p class="text-center"><a href='@Url.Action("ChangePassword" , "Account")'>Change Passwpord </a> </p>
+    </div>
+    <br />
+    
+</div>
+<div class="container my-3">
+    <div class="container-fluid mt-3 mb-3">
+        <div class="row g-2">
+
+            @{ var j = 0; }
+            @if (Model != null)
+            {
+                @foreach (var item in Model)
+                {
+                    j = j + 1;
+
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="img-container">
+                                @if (item.ItemImageByPath != null && item.ItemImageByPath != "")
+                                {
+                                    @*<img src="@item.ItemImageByPath" class="img-fluid" alt="">*@
+                                    <div class="d-flex justify-content-between align-items-center p-2 first"> @*<span class="percent">-25%</span>*@ @*<span class="wishlist"><i class="fa fa-heart"></i></span>*@ </div> <img src="@item.ItemImageByPath" class="img-fluid" alt="">
+                                }
+                                else
+                                {
+                                    @*<img src="~/images/india-ranked-5th-in-pictorial-warnings-on-cigarette-packets.jpg" class="img-fluid" alt="">*@
+                                    <div class="d-flex justify-content-between align-items-center p-2 first"> @*<span class="percent">-25%</span>*@ @*<span class="wishlist"><i class="fa fa-heart"></i></span>*@ </div> <img src="~/images/india-ranked-5th-in-pictorial-warnings-on-cigarette-packets.jpg" class="img-fluid" alt="">
+                                }
+                            </div>
+                            <div class="product-detail-container">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="py-2 text-center">@item.Name</h5> <span class="text-custom font-weight-bold">$@item.Retail</span>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center mt-2">
+                                   @* <div class="ratings"> <i class="fa fa-star"></i> <span>4.5</span> </div>*@
+                                    @*<div class="size"> <label class="radio"> <input type="radio" name="size1" value="small"> <span>S</span> </label> <label class="radio"> <input type="radio" name="size1" value="Medium" checked> <span>M</span> </label> <label class="radio"> <input type="radio" name="size1" value="Large"> <span>L</span> </label> </div>*@
+                                </div>
+
+                                <div class="mt-3">
+                                    <button class="btn btn-custom btn-block">
+                                        <a href="@Url.Action("ProductDetailsForCustomers", "CustomerHomePage", new { @area = "Customer", id = item.Id })" class="text-white">Add to Cart</a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+    </div>
+</div>

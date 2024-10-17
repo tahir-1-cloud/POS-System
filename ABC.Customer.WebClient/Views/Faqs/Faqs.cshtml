@@ -1,0 +1,137 @@
+﻿@model ABC.EFCore.Repository.Edmx.FaqValidation
+@{
+    ViewBag.Title = "Faqs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!--Jquery Calendr-->
+    <link href="styles/glDatePicker.default.css" rel="stylesheet" type="text/css">
+
+    <!-- Js Stylesheet -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+
+    @if (TempData["response"] != null)
+    {
+        <script>
+            $(document).ready(function() {
+                var success = '@((TempData["response"] != null).ToString())';
+                if (success == 'false' || success == false) {
+                } else {
+                    toastr.error('@TempData["response"].ToString()')
+                }
+            });
+        </script>
+    }
+    <title>FAQs</title>
+    <style>
+        body {
+            background-color: lightcyan;
+        }
+
+        .container {
+            margin-top: 40px;
+            background-color: white;
+        }
+
+        .form-row {
+            margin-top: 20px;
+        }
+
+        .panel-primary > .panel-heading {
+            color: #fff;
+            background-color: #337AB7;
+            border-color: #337AB7;
+        }
+
+        .panel-heading {
+            padding: 10px 15px;
+            border-bottom: 1px solid transparent;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+        }
+
+        button {
+            margin: 20px;
+        }
+
+        .card {
+            border: none;
+        }
+
+        .Fee {
+            margin-top: 25px;
+            padding: 25px;
+            display: none;
+            color: #fff;
+            border: 1px solid grey;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3 style="margin-left: 30px; margin-top: 10px;">FAQ's</h3>
+        @using (Html.BeginForm(Html.BeginForm("Faqs", "Faqs", FormMethod.Post)))
+        {
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="col-12 grid-margin">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="panel panel-primary ">
+                            <div class="panel-heading" id="panelheading">Add FAQ's</div>
+                            <div class="panel-body">
+                                <div class="form-row">
+                                    <div class="form-group col-md-3">
+                                        <label>Title</label>
+                                        @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Title" })
+                                        @Html.ValidationMessageFor(x => x.Title, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group col-md-8">
+                                        <label>Description</label>
+                                        @Html.TextAreaFor(x => x.Description, new { @class = "form-control", @placeholder = "Description" })
+                                        @Html.ValidationMessageFor(x => x.Description, "", new { @class = "text-danger" })
+                                    </div>
+
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-3">
+                                        <label>Publish</label>
+                                        @Html.CheckBox("IsPublic", false)            
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-button" style="padding-left: 25px; float:right;">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+

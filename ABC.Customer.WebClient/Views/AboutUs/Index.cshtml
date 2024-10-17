@@ -1,0 +1,293 @@
+﻿@model IEnumerable<ABC.EFCore.Repository.Edmx.Product>
+@{
+    ViewBag.Title = "AboutUs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    @@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+
+    body {
+        /*background-color: #d6d2d2;
+        font-family: "Poppins", sans-serif;
+        font-weight: 300*/
+    }
+
+    .card {
+        border: none;
+        border-radius: 10px
+    }
+
+    .btn-custom {
+        background-color: #64b3f4;
+    }
+
+    .text-custom {
+        color: #64b3f4;
+    }
+
+    .percent {
+        padding: 5px;
+        background-color: #64b3f4;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 14px;
+        height: 35px;
+        width: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer
+    }
+
+    .wishlist {
+        height: 40px;
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background-color: #eee;
+        padding: 10px;
+        cursor: pointer
+    }
+
+    .img-container {
+        position: relative
+    }
+
+        .img-container .first {
+            position: absolute;
+            width: 100%
+        }
+
+        .img-container img {
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px
+        }
+
+    .product-detail-container {
+        padding: 10px
+    }
+
+    .ratings i {
+        color: #a9a6a6
+    }
+
+    .ratings span {
+        color: #a9a6a6
+    }
+
+    label.radio {
+        cursor: pointer
+    }
+
+        label.radio input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            visibility: hidden;
+            pointer-events: none
+        }
+
+        label.radio span {
+            height: 25px;
+            width: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #64b3f4;
+            color: #64b3f4;
+            font-size: 10px;
+            border-radius: 50%;
+            text-transform: uppercase
+        }
+
+        label.radio input:checked + span {
+            border-color: #64b3f4;
+            background-color: #64b3f4;
+            color: #fff
+        }
+</style>
+
+
+@*/////carousal style/////*@
+
+<style>
+    .carousel-wrap {
+        margin: 90px auto;
+        padding: 0 5%;
+        width: 100%;
+        position: relative;
+    }
+
+    /* fix blank or flashing items on carousel */
+    .owl-carousel .item {
+        position: relative;
+        z-index: 100;
+        -webkit-backface-visibility: hidden;
+    }
+
+    /* end fix */
+    .owl-nav > div {
+        margin-top: -26px;
+        position: absolute;
+        top: 50%;
+        color: #cdcbcd;
+    }
+
+    .owl-nav i {
+        font-size: 52px;
+    }
+
+    .owl-nav .owl-prev {
+        left: -30px;
+    }
+
+    .owl-nav .owl-next {
+        right: -30px;
+    }
+</style>
+
+
+
+
+<div class="container">
+    <!-- //inner banner -->
+    <!-- breadcrumbs -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index","Home")">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">About Us</li>
+        </ol>
+    </nav>
+    <div class="row">
+        <!-- //breadcrumbs -->
+        <div class="col-lg-12">
+            <h5 class="head_agileinfo text-center text-capitalize mt-3 mb-3">
+                <span>A</span>bout Us
+            </h5>
+        </div>
+        <div class="row mb-3" style=" background: #BED0E9; width:99.8%;margin-left:2px;">
+
+            <div class="text-center col-lg-5 p-0">
+
+                <img src="~/images/AboutUs.jpg" alt="Aboutus image" style="width:100%;" />
+            </div>
+            <div class="col-lg-6">
+                <p style="padding: 5em 2em; color:black">AbcDiscounts is providing a one-stop solution that offers, 52000+ products, holding 10,000+ brands along with the best prices and promotional deals for its customer base; we feel honored to serve. Over 250,000 shoppers visit our branches each day, while simultaneously building a close relationship with our 85,000 growing unique clients, AbcDiscounts secured a position that most retailers dream to acquire.</p>
+            </div>
+
+        </div>
+        <div class="mt-5" style="background: #eee; font-size: 15px; padding: 6em 2em;">
+            <h5 class="head_agileinfo text-center text-capitalize ">
+                <span>W</span>ho We Are
+            </h5>
+            <p class="pt-4" style="font-size: 15px;  ">
+                Our company was founded in 2012, and the primary purpose of "ABC Discounts" is to build a trustworthy platform for smokers around the globe. For a decade, we have been known for our steadfast commitment to customer availability, effective communication, and quality products. Without burning a hole in your pocket, we are offering free shipping and bundles of gift cards to treat your smoking needs accordingly. We have gathered all the tobacco products that are tailored to meet the preferences of adult consumers.
+                Our mission is to build valuable long-term relationships with our customers and prevent underage shopping, containing health-damaging results. Our inventory is full of numberless items from the categories of cigarettes and cigars, so name any brand and You are all set to add it to your shopping cart. In case of any inconvenience, we are offering 30 days easy returning policy to make things as feasible as you can imagine.
+                To stay true to our commitments, ABC discounts employs a large number of an onsite team of experts to provide you with the best possible customer experience. Last but not least, we follow all rules and regulations implemented by the food and drug administration (FDA) to expand our business for good.
+                if you haven't yet hunted your favorite products then what are you waiting for?
+            </p>
+            <p>
+                As one of North Carolina’s fastest growing wholesale distributor, ABC Discount has been the leading convenience store supplier and distributor of tobacco, cigarette, vape, candy, and other novelty products in the triad area. We feel proud to service a handsome portfolio of more than a thousand satisfied customers, while holding the maximum market share in our area. ABC Discount, LLC pays special attention to the customers’ needs while keeping in mind the changing market trends and developments.
+
+                Our ultimate motive of affordability is sustained under the operation of a strong and dedicated team. We supply products in bulk to a diverse customer base from all facets of the industry including stores, gas stations, convenient stores and smoke shops. Additionally, we offer free delivery services to further reflect on our commitment of product variety, efficient service, relevant technology and ultra-competitive pricing. Our programs are centered around the objective of offering customers the ability to obtain their entire store needs from just one reliable source. Moreover, we are willing to go to any limits to satisfy the needs of our customers.
+
+
+            </p>
+        </div>
+    </div>
+    @*<div class="text-left" style="width:80%;">
+
+
+    </div>*@
+
+
+
+    <div class="container">
+        <div class="carousel-wrap">
+            <h5 class="head_agileinfo text-center text-capitalize pb-5">
+                <span>B</span>est Selling Products
+            </h5>
+            <div class="owl-carousel">
+
+                @{
+                    var i = 0;
+                }
+                @if (Model != null)
+                {
+                    @foreach (var item in Model)
+                    {
+                        i = i + 1;
+
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="img-container">
+                                    @if (item.ItemImageByPath != null && item.ItemImageByPath != "")
+                                    {
+                                        @*<img src="@item.ItemImageByPath" class="img-fluid" alt="">*@
+                                        <div class="d-flex justify-content-between align-items-center p-2 first"> @*<span class="percent">-25%</span>*@ <span class="wishlist"><i class="fa fa-heart"></i></span> </div> <img src="@item.ItemImageByPath" class="img-fluid" alt="">
+                                    }
+                                    else
+                                    {
+                                        @*<img src="~/images/india-ranked-5th-in-pictorial-warnings-on-cigarette-packets.jpg" class="img-fluid" alt="">*@
+                                        <div class="d-flex justify-content-between align-items-center p-2 first"> @*<span class="percent">-25%</span>*@ <span class="wishlist"><i class="fa fa-heart"></i></span> </div> <img src="~/images/india-ranked-5th-in-pictorial-warnings-on-cigarette-packets.jpg" class="img-fluid" alt="">
+                                    }
+                                </div>
+                                <div class="product-detail-container">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h5 class="py-2 text-center">@item.Name</h5> @*<span class="text-custom font-weight-bold">$3.99</span>*@
+                                    </div>
+
+                                    @*<div class="d-flex justify-content-between align-items-center mt-2">
+                            <div class="ratings"> <i class="fa fa-star"></i> <span>4.5</span> </div>
+                            <div class="size"> <label class="radio"> <input type="radio" name="size1" value="small"> <span>S</span> </label> <label class="radio"> <input type="radio" name="size1" value="Medium" checked> <span>M</span> </label> <label class="radio"> <input type="radio" name="size1" value="Large"> <span>L</span> </label> </div>
+                            </div>*@
+
+                                    <div class="mt-3">
+                                        <button class="btn btn-custom btn-block">
+                                            <a href="@Url.Action("ProductDetail", "Home", new {@area = "Home", id = item.Id })" class="text-white">Add to Cart</a>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script>
+    $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        navText: [
+            "<i class='fa fa-caret-left'></i>",
+            "<i class='fa fa-caret-right'></i>"
+        ],
+        autoplay: true,
+        autoplayHoverPause: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 3
+            },
+            1000: {
+                items: 5
+            }
+        }
+    })
+</script>

@@ -1,0 +1,170 @@
+﻿@model IEnumerable<ABC.EFCore.Repository.Edmx.Faq>
+@{
+    ViewBag.Title = "Faqs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    h2 {
+        font-family: Arial, Verdana;
+        font-weight: 800;
+        font-size: 2.5rem;
+        color: #091f2f;
+        text-transform: uppercase;
+    }
+
+    .accordion-section .panel-default > .panel-heading {
+        border: 0;
+        background: #f4f4f4;
+        padding: 0;
+    }
+
+    .accordion-section .panel-default .panel-title a {
+        display: block;
+        color: #555;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 22px;
+    }
+
+        .accordion-section .panel-default .panel-title a:after {
+            font-family: 'FontAwesome';
+            font-style: normal;
+            font-size: 3rem;
+            content: "\f106";
+            color: #555;
+            float: right;
+            margin-top: -12px;
+        }
+
+        .accordion-section .panel-default .panel-title a.collapsed:after {
+            content: "\f107";
+        }
+
+    .accordion-section .panel-default .panel-body {
+        font-size: 1.2rem;
+    }
+</style>
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index","Home",new{@area="Home"})">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">FAQs</li>
+        </ol>
+    </nav>
+    <!-- //inner banner -->
+    <!-- FAQ-help-page -->
+
+    <br />
+    <section class="accordion-section clearfix mt-3" aria-label="Question Accordions">
+        <div class="container">
+
+            <h2>Frequently Asked Questions </h2>
+            <br />
+            @foreach(var item in Model)
+            {
+                  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading p-3 mb-3" role="tab" id="heading0">
+                        <h3 class="panel-title">
+                            <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse0" aria-expanded="true" aria-controls="collapse0">
+                                @*Do we deliver?*@ @item.Title
+                            </a>
+                        </h3>
+                    </div>
+                    <div id="collapse0" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading0">
+                        <div class="panel-body px-3 mb-4">
+                            <p>
+    @*                            Yes, but there is a certain order limit that must be met to qualify for delivery.
+                                Who are our potential customers?
+                                We deal with retailers and wholesalers and ABC discount is large enough to handle any business, yet just the right size to ensure our customers’ business is valued and their needs satisfied (and delivered) on time. We can match the competition product-for-product and price-for-price, but we deliver our services with a much more personalized touch.
+                                What are we specialized in?
+                                ABC Discount is leading the market in every facet of industry. However, our company is specialized in tobacco products, cigarettes, groceries and novelty items. We have a diverse customer base, and our commitment is to meet their demand and help them grow their business.
+                                Are we open to public?
+                                Unfortunately, we only deal with retailers and in order to shop with us, a valid tax ID must be shown and an account for trading and buying must be created.
+                                What documents are required to open an account?
+                                A valid business use sales and registration number, EIN Number and proof of identification will be required to be a part of our family.*@
+                                @item.Description
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+        @*        <div class="panel panel-default">
+                <div class="panel-heading p-3 mb-3" role="tab" id="heading3">
+                <h3 class="panel-title">
+                <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="true" aria-controls="collapse3">
+                What is the Grocery Delivery fee?
+                </a>
+                </h3>
+                </div>
+                <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
+                <div class="panel-body px-3 mb-4">
+                <p>The fee is Rs 100 for processing, handling, and delivering your orders straight to your doorstep</p>
+                </div>
+                </div>
+                </div>*@
+                @* <div class="panel panel-default">
+                <div class="panel-heading p-3 mb-3" role="tab" id="heading4">
+                <h3 class="panel-title">
+                <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="true" aria-controls="collapse4">
+                Is there a minimum order amount for Grocery Delivery?
+                </a>
+                </h3>
+                </div>
+                <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+                <div class="panel-body px-3 mb-4">
+                <p>Yes, the minimum order amount is Rs $500.00 before tax.</p>
+                </div>
+                </div>
+                </div>*@
+                @* <div class="panel panel-default">
+                <div class="panel-heading p-3 mb-3" role="tab" id="heading5">
+                <h3 class="panel-title">
+                <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="true" aria-controls="collapse5">
+                What is Express Delivery?
+                </a>
+                </h3>
+                </div>
+                <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
+                <div class="panel-body px-3 mb-4">
+                <p>We do provide same-day delivery for orders containing essential items (Milk, Bread, Eggs, Baby diapers, Veggies, and Fruits, etc) if the order is placed before 4pm. There will be an additional delivery fee of Rs:100 if the order amount is less than Rs:$2000</p>
+                </div>
+                </div>
+                </div>*@
+                @*  <div class="panel panel-default">
+                <div class="panel-heading p-3 mb-3" role="tab" id="heading6">
+                <h3 class="panel-title">
+                <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="true" aria-controls="collapse6">
+                Is there a minimum order amount for Grocery Delivery?
+                </a>
+                </h3>
+                </div>
+                <div id="collapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading6">
+                <div class="panel-body px-3 mb-4">
+                <p>Yes, the minimum order amount is Rs $500.00 before tax.</p>
+                </div>
+                </div>
+                </div>*@
+                @* <div class="panel panel-default">
+                <div class="panel-heading p-3 mb-3" role="tab" id="heading7">
+                <h3 class="panel-title">
+                <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="true" aria-controls="collapse7">
+                What is your delivery coverage area?
+                </a>
+                </h3>
+                </div>
+                <div id="collapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading6">
+                <div class="panel-body px-3 mb-4">
+                <p>We currently deliver in USA ONLY</p>
+                </div>
+                </div>
+                </div>*@
+            </div>
+            }
+          
+        </div>
+    </section>
+</div>
